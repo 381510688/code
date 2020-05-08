@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div>{{$options._componentTag}}</div>
     <div>Hello {{person.name}}</div>
     <div>Updated次数：{{count}}</div>
   </div>
@@ -15,8 +16,16 @@ export default {
       count: 0
     };
   },
+  watch: {
+    person: {
+      handler(val, oldVal) {
+        this.count++;
+      },
+      immediate: true
+    }
+  },
   updated() {
-    this.count++;
+    console.log("HelloWorld updated");
   }
 };
 </script>
